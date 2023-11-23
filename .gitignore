@@ -2,3 +2,6 @@
 # compiled output
 user-service/node_modules
 user-service/dist
+
+task-service/node_modules
+task-service/dist
