@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 
 import { AppService } from './app.service';
 import { HealthCheckModule } from '../health-check/health-check.module';
-import { UserModule } from '../task/task.module';
+import { TaskModule } from '../task/task.module';
 import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
@@ -13,7 +13,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       isGlobal: true,
       envFilePath: '.env',
     }),
-    UserModule,
+    TaskModule,
     HealthCheckModule,
     MongooseModule.forRoot(process.env.DB_URI),
   ],
