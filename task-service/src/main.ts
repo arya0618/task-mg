@@ -2,13 +2,14 @@ import { config } from 'dotenv';
 config();
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './module/app/app.module';
-import { Logger } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { constants } from './helpers/constants';
 async function bootstrap() {
   const logger = new Logger();
   const app = await NestFactory.create(AppModule);
   app.enableCors();
+  app.useGlobalPipes(new ValidationPipe());
   const swaggerOpt = new DocumentBuilder()
     .setTitle(process.env.SERVICE_NAME)
     .setDescription(constants.swagger_msg)
