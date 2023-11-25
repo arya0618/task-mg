@@ -18,3 +18,22 @@ This repository contains two microservices (`user-service` and `task-service`) b
    git clone https://github.com/arya0618/task-mg.git
    cd task-mg
 
+1. Start database server
+
+   ```bash
+   cd docker
+   docker-compose up -d
+
+2. User-service
+
+   ```bash
+   cd user-service
+   npm install
+   npm run start
+
+3. Task-service
+
+   ```bash
+   cd task-service
+   npm install
+   npm run start
