@@ -2,6 +2,7 @@ export const constants = {
   HEALTH_CONTROLLER: 'health-check',
   swagger_msg: 'This is task-service documenttaion',
   TASK_CONTROLLER: 'task',
+  JWT_SECRET: 'abcdTaskManagementabcd',
 };
 
 export const descriptionMsg = {

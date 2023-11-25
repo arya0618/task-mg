@@ -4,11 +4,11 @@ import * as mongoose from 'mongoose';
 import { User } from './entity/user.entity';
 import { UserRole } from '../../helpers/enums';
 import { messages } from 'message/user.msg';
+import { constants } from 'helpers/constants';
 
 // Service File for Manage USer Listing
 @Injectable()
 export class UserService {
- 
   constructor(
     @InjectModel('User')
     private userModel: mongoose.Model<User>,
@@ -18,10 +18,16 @@ export class UserService {
    * get user  information
    */
   async getUser(email: string): Promise<object> {
+    console.log('email: >>', email);
     try {
+      let userType: string = UserRole.USER;
+      email.trim() == constants.ADMIN_EMAIL
+        ? (userType = UserRole.ADMIN)
+        : (userType = UserRole.USER);
+      console.log('userType: >>', userType);
       const res = await this.userModel.findOne({
         email,
-        userType: UserRole.USER,
+        userType,
       });
       return res;
     } catch (error) {
@@ -61,7 +67,7 @@ export class UserService {
     }
   }
 
- /**
+  /**
    * delete user  information
    */
   async deleteUser(email: string): Promise<object> {
@@ -69,7 +75,7 @@ export class UserService {
       const remove = await this.userModel.deleteOne({ email });
       console.log('removed user:', remove);
       if (remove.deletedCount === 1) {
-      return { message: `User deleted : ${email}` };
+        return { message: `User deleted : ${email}` };
       }
       throw new NotFoundException(messages.USER_NOTFOUND);
     } catch (error) {
