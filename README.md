@@ -1,6 +1,7 @@
 # Task Managment App
 
 This repository contains two microservices (`user-service` and `task-service`) built with Nest.js. Additionally, there's a Docker Compose file for setting up a MongoDB database.
+Task: https://docs.google.com/document/d/1bocTjds2og4iKrRLk7qn2T1fmCUleDhnb8DiQAMH-TI/edit#heading=h.r21jfu5lltc2
 
 ## Getting Started
 
