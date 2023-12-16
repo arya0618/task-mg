@@ -34,7 +34,7 @@ export class UserController {
 
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'user creation',
+    description: 'user createad',
   })
   @Post('/')
   userCreate(@Body() addUserDto: AddUserDto): Promise<object> {
